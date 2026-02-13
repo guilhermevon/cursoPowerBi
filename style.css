@@ -8,11 +8,11 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  font-weight: 200;
+  font-weight: 400;
   font-style: normal;
   line-height: 1.6;
   color: #333;
-  background: #0a1931;
+  background: #ffffff;
   min-height: 100vh;
 }
 
@@ -24,8 +24,8 @@ body {
 
 /* Header */
 header {
-  background: rgba(2, 4, 63, 0.1);
-  backdrop-filter: blur(10px);
+  background: transparent;
+  box-shadow: none;
   position: fixed;
   width: 100%;
   top: 0;
@@ -41,8 +41,12 @@ nav {
 
 .logo {
   font-size: 1.5rem;
-  font-weight: bold;
-  color: #4a7fa7;
+  font-weight: 700;
+  color: #ffffff;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
 }
 
 nav ul {
@@ -51,59 +55,105 @@ nav ul {
 }
 
 nav ul li {
-  margin-left: 2rem;
+  margin-left: 2.5rem;
 }
 
 nav ul li a {
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   text-decoration: none;
-  transition: color 0.3s;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 nav ul li a:hover {
-  color: #b3cfe5;
+  color: #b3d9ff;
 }
 
 /* Hero Section */
 #hero {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 120px 20px 80px;
   min-height: 100vh;
-  color: white;
-  background-color: #0a1931;
+  color: #ffffff;
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+              url('./7508e3990857d8ab2c6b83d89bf7eda1.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  top: -100px;
+  right: -100px;
+}
+
+#hero::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 50%;
+  bottom: -50px;
+  left: -50px;
 }
 
 .hero-content {
   flex: 1;
-  max-width: 600px;
-  
+  max-width: 800px;
+  position: relative;
+  z-index: 10;
 }
 
 .hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  opacity: 0.95;
+  line-height: 1.8;
 }
 
 .cta-button {
   display: inline-block;
-  background: linear-gradient(135deg, #4a7fa7 0%, #012d4c 50%);
+  background: #0066cc;
   color: white;
   padding: 1rem 2rem;
   text-decoration: none;
-  border-radius: 50px;
-  font-weight: bold;
-  transition: background 0.3s;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
 }
 
 .cta-button:hover {
-  background: #046e10;
+  background: #0052a3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
+}
+
+.cta-button-hero {
+  padding: 0.75rem 1.8rem;
+  font-size: 0.95rem;
 }
 
 .hero-image {
@@ -120,22 +170,56 @@ nav ul li a:hover {
 /* Sections */
 section {
   padding: 80px 0;
-  background: #333;
-  color: #fff;
+  background: #ffffff;
 }
 
 section:nth-child(even) {
-  background: #0a1931;
+  background: #f8f9fa;
 }
 
 section h2 {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   font-size: 2.5rem;
-  color: #4a7fa7;
+  color: #0066cc;
+  font-weight: 700;
 }
 
-/* Modulos */
+#sobre {
+    padding: 60px 0;
+}
+
+.sobre-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.sobre-texto {
+    flex: 1;
+}
+
+.sobre-imagem {
+    flex: 1;
+    text-align: center;
+}
+
+.sobre-imagem img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Responsivo para celular */
+@media (max-width: 768px) {
+    .sobre-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
+/* Modulos Grid */
 .modulos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -143,36 +227,24 @@ section h2 {
 }
 
 .modulo {
-  background: linear-gradient(135deg, #ffffff 0%, #012d4c 100%);
+  background: #ffffff;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  position: relative;
-}
-
-.modulo::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #4a7fa7, #1a3d63);
-  border-radius: 10px;
-  z-index: -1;
-  padding: 2px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
 }
 
 .modulo:hover {
   transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .modulo h3 {
   margin-bottom: 1rem;
-  color: #4a7fa7;
+  color: #0066cc;
+  font-size: 1.3rem;
+  font-weight: 700;
 }
 
 .modulo ul {
@@ -180,11 +252,16 @@ section h2 {
 }
 
 .modulo ul li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #eee;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  color: #555;
 }
 
-/* Pricing */
+.modulo ul li:last-child {
+  border-bottom: none;
+}
+
+/* Pricing Grid */
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -192,102 +269,127 @@ section h2 {
 }
 
 .pricing-card {
-  background: linear-gradient(135deg, #ffffff 0%, #b5aaaa 80%);
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   text-align: center;
-  transition: transform 0.3s;
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
   position: relative;
 }
 
 .pricing-card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .pricing-card h3 {
-  margin-bottom: 1rem;
-  color: #4a7fa7;
+  margin-bottom: 1.5rem;
+  color: #0066cc;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .price {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #4a82bd;
-  margin-bottom: 1rem;
-  
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0066cc;
+  margin-bottom: 1.5rem;
 }
 
 .pricing-card ul {
   list-style: none;
   margin-bottom: 2rem;
-  color: #333;
-  
+  color: #555;
 }
 
 .pricing-card ul li {
-  padding: 0.5rem 0;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+}
+
+.pricing-card ul li:last-child {
+  border-bottom: none;
 }
 
 .pricing-card.popular {
-  border: 3px solid #4a7fa7;
+  border: 2px solid #0066cc;
+  position: relative;
+  background: linear-gradient(135deg, #f0f5ff 0%, #ffffff 100%);
 }
 
 .pricing-card.popular::before {
-  content: "Mais Popular";
+  content: "MAIS POPULAR";
   position: absolute;
-  top: -10px;
+  top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: #4a7fa7;
+  background: #0066cc;
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 1rem;
   border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.pricing-card .cta-button {
+  width: 100%;
+  margin-top: 1rem;
 }
 
 /* Beneficios */
 .beneficios-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
 
 .beneficio {
   text-align: center;
-  padding: 2rem;
-  background: #333;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  border: 2px solid #4a82bd;
-  background-clip: padding-box;
+  padding: 2.5rem 2rem;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
   position: relative;
 }
 
-.beneficio::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #4a7fa7, #1a3d63);
-  border-radius: 10px;
-  z-index: -1;
-  padding: 2px;
+.beneficio:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .beneficio h4 {
   margin-bottom: 1rem;
-  color: #4a7fa7;
+  color: #0066cc;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.beneficio p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.beneficio-icon {
+  display: block;
+  font-size: 2.5rem;
+  color: #0066cc;
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
 }
 
 /* Footer */
 footer {
-  background: #333;
-  color: white;
-  padding: 2rem 0;
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 3rem 0 1rem;
 }
 
 .footer-content {
@@ -299,26 +401,32 @@ footer {
 
 .footer-section h3 {
   margin-bottom: 1rem;
-  color: #b3cfe5;
+  color: #0066cc;
+  font-weight: 700;
 }
 
 .footer-section p {
   margin: 0.5rem 0;
+  color: #ccc;
+  font-size: 0.95rem;
 }
 
 .footer-section a {
-  color: #f6fafd;
+  color: #ccc;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .footer-section a:hover {
-  color: #4a7fa7;
+  color: #0066cc;
 }
 
 .footer-bottom {
   text-align: center;
-  border-top: 1px solid #4a7fa7;
-  padding-top: 1rem;
+  border-top: 1px solid #333;
+  padding-top: 2rem;
+  color: #999;
+  font-size: 0.9rem;
 }
 
 #inscrever {
@@ -327,6 +435,7 @@ footer {
   align-items: center;
   justify-content: center;
   min-height: 300px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
 }
 
 #inscrever .container {
@@ -337,6 +446,8 @@ footer {
 
 .Pinscreva {
   margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #333;
 }
 
 /* Responsive */
@@ -347,8 +458,16 @@ footer {
     padding: 100px 20px 40px;
   }
 
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
   nav ul {
-    display: none; /* Simple mobile menu, can be improved */
+    display: none;
   }
 
   .pricing-grid,
@@ -357,7 +476,31 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .footer-content {
-    grid-template-columns: 1fr;
+  section {
+    padding: 60px 0;
+  }
+
+  section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .cta-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
   }
 }
